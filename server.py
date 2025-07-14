@@ -31,8 +31,9 @@ app.add_middleware(
 
 # MongoDB connection
 mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017/')
+db_name = os.environ.get('DB_NAME', 'puff_archive')
 client = MongoClient(mongo_url)
-db = client.puff_archive
+db = client[db_name]
 cheats_collection = db.cheats
 
 # Create uploads directory
